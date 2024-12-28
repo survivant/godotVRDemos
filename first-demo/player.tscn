@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnndhjqphbil"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_5v6lq"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_0foc6"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000452325, 0, 0)
+
+[node name="LeftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("1_5v6lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0483854, 0.296512, -0.494148)
+
+[node name="RightHand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="RightHand" instance=ExtResource("2_0foc6")]
+transform = Transform3D(1, 0, 0, 0, 0.999472, -0.0324923, 0, 0.0324923, 0.999472, 0.131084, 0.157391, -0.497448)
