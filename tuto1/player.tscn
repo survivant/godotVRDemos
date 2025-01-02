@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://csucj5tgg812w"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_5v6lq"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_0foc6"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_f0l8r"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_b2ohn"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_5ps4i"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_nlyom"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="7_ltriv"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15458, 0.471369, -0.208737)
+
+[node name="LeftHandControler" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="LeftHandControler" instance=ExtResource("1_5v6lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0483854, 0.296512, -0.494148)
+
+[node name="FunctionPickup" parent="LeftHandControler/LeftHand" instance=ExtResource("2_f0l8r")]
+
+[node name="MovementDirect" parent="LeftHandControler/LeftHand" instance=ExtResource("3_b2ohn")]
+
+[node name="RightHandControler" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="RightHandControler" instance=ExtResource("2_0foc6")]
+transform = Transform3D(1, 0, 0, 0, 0.999472, -0.0324923, 0, 0.0324923, 0.999472, 0.131084, 0.157391, -0.497448)
+
+[node name="FunctionPickup" parent="RightHandControler/RightHand" instance=ExtResource("2_f0l8r")]
+
+[node name="MovementTurn" parent="RightHandControler" instance=ExtResource("5_5ps4i")]
+
+[node name="PlayerBody" type="CharacterBody3D" parent="." groups=["player_body"] instance=ExtResource("6_nlyom")]
+process_priority = -100
+process_physics_priority = -100
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181683, 0)
+top_level = true
+collision_layer = 524288
+collision_mask = 1023
+script = ExtResource("7_ltriv")
