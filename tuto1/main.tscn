@@ -61,14 +61,14 @@ shadow_enabled = true
 [node name="XROrigin3D" parent="." instance=ExtResource("2_lbug2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219795, 1.00161, 1.04761)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Table" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1416, 0.526307, 0.0659376)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0678117, -0.213678, -0.0981419)
 mesh = SubResource("BoxMesh_vdejg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
 shape = SubResource("ConvexPolygonShape3D_84qye")
 
 [node name="Cube" parent="." instance=ExtResource("3_trfvh")]
